@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+
+<html>
+   <head>
+      <title>Home</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/skel.min.js"></script>
+      <script src="js/skel-layers.min.js"></script>
+      <script src="js/init.js"></script>
+      <noscript>
+         <link rel="stylesheet" href="css/skel.css" />
+         <link rel="stylesheet" href="css/style.css" />
+         <link rel="stylesheet" href="css/style-xlarge.css" />
+      </noscript>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <style>
+      .navigbar {
+      overflow: hidden;
+      background-color: black;
+      margin-top: -3%;
+      }
+      .navigbar a {
+      float: left;
+      font-size: 16px;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      }
+      .drpdwn {
+      float: left;
+      overflow: hidden;
+      }
+      .drpdwn .dropbtn {
+      font-size: 16px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+      }
+      .navigbar a:hover, .drpdwn:hover .dropbtn {
+      background-color: red;
+      }
+   </style>
+   <script>
+      function getCookie(cname) {
+      	var name = cname + "=";
+      	var decodedCookie = document.cookie;
+      //        alert("dcdc"+decodedCookie);
+      	var ca = decodedCookie.split(';');
+      	for(var i = 0; i <ca.length; i++) {
+      		var c = ca[i];
+
+      		while (c.charAt(0) == ' ') {
+      			c = c.substring(1);
+      		}
+      		if (c.indexOf(name) == 0) {
+      			return c.substring(name.length, c.length);
+      			}
+      	}
+      	return "";
+      }
+
+
+
+      function checkCookie(cname) {
+      var username = getCookie(cname);
+      if (username != "") {
+      document.getElementById('logout').innerHTML='<img src="images/logoot.png" onclick="rec()" align="right" title="Logout" style="width:40px; height:40px;">';
+
+      }
+      else {
+      document.getElementById('logout').innerHTML="";
+      }
+
+      forRef(username);
+      }
+
+      function forRef(username){
+      		if (username != "") {
+      			document.getElementById('aNavig').innerHTML='<a href="../Hotel_list/" >Go Booking !</a><a href="../Bookings/" >History</a><a href="#"data-toggle="modal" data-target="#myModal" >Feedback</a>';
+
+      		}
+      		else{
+      		document.getElementById('aNavig').innerHTML='<a href="../jsss.html?var=1">Register</a><a href="../jsss.html?var=2">Log in</a>';
+
+
+      }
+
+      }
+
+      function rec() {
+        $.ajax({
+             type: "GET",
+             url: "../delcookie.php",
+             success:function(){location.reload();}, error:function(){}
+         });
+         window.location.replace("https://localhost/WT/HomePage/");
+       }
+
+   </script>
+
+   <body id="top" onload="checkCookie('user')">
+
+     <!-- Modal -->
+       <div class="modal fade" id="myModal" role="dialog">
+         <div class="modal-dialog">
+
+           <!-- Modal content-->
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Write to us...</h4>
+             </div>
+             <form class="contact2-form validate-form" action="../feedback.php" method="post">
+     					<br><br>
+
+              <h4><b>Subject:</b></h4>
+     					<div class="wrap-input2" style="width:70%; margin-left:20%; margin-top:-6%;" >
+     						<input class="input2" type="text" name="subject">
+     						<span class="focus-input2"></span>
+     					</div>
+
+              <br><br>
+
+              <h5>Feedback:</h5>
+     					<div class="wrap-input2 validate-input" data-validate = "Message is required">
+     						<textarea rows="5" class="input2" style="width:70%; margin-left:20%; margin-top:-5%;" name="message"></textarea>
+     						<span class="focus-input2" data-placeholder="MESSAGE"></span>
+     					</div>
+              <br><br>
+              <button style="margin-left:45%;" type="submit" class="btn btn-success">Send</button>
+     				</form>
+           </div>
+
+         </div>
+       </div>
+
+      <div class="navigbar">
+         <a href="#">Home</a>
+         <a href="../AboutFolder/">About</a>
+         <div class="aNavig" id="aNavig">
+
+         </div>
+         <div id="logout" class="log">
+         </div>
+      </div>
+      <!-- Banner -->
+      <section id="banner">
+         <div class="inner">
+            <h2>DISCOVER</h2>
+            <p>'Let's wander together'<br> - brought to you by<br><br><img src="../onlyimages/logo.png" style="height:140px; width:140px;"></p>
+            <ul class="actions">
+              <div id="bannerRef">
+                <li><a href="../AboutFolder/index.html" class="button big alt">Learn More</a></li>
+
+             </div>
+            </ul>
+         </div>
+      </section>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin:10% 27% 5% 27%;
+         padding:5% 5% 5% 5%; box-shadow: 10px 20px 38px black; border-radius: 25px 15px 30px 25px; border-width:5px; border-style:solid;">
+         <!-- Indicators -->
+         <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+            <li data-target="#myCarousel" data-slide-to="7"></li>
+            <li data-target="#myCarousel" data-slide-to="8"></li>
+            <li data-target="#myCarousel" data-slide-to="9"></li>
+         </ol>
+         <!-- Wrapper for slides -->
+         <div class="carousel-inner">
+            <div class="item active">
+               <img src="../onlyimages/carlKashmir.jpg" alt="Kashmir Circuit">
+               <div class="carousel-caption">
+                  <h3>Kashmir Circuit</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlDharmashala.jpg" alt="Dharamshala">
+               <div class="carousel-caption">
+                  <h3>Dharamshala</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlHampi.jpg" alt="Hampi">
+               <div class="carousel-caption">
+                  <h3>Hampi</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlCoorg.jpg" alt="Coorg">
+               <div class="carousel-caption">
+                  <h3>Coorg</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlNainital.jpg" alt="Nainital">
+               <div class="carousel-caption">
+                  <h3>Nainital</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlVaranasi.jpg" alt="Varanasi">
+               <div class="carousel-caption">
+                  <h3>Varanasi</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlMathura.jpg" alt="Mathura Vrindavan">
+               <div class="carousel-caption">
+                  <h3>Mathura Vrindavan</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlMysore.jpg" alt="Mysore">
+               <div class="carousel-caption">
+                  <h3>Mysore</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlKasol.jpg" alt="Kasol">
+               <div class="carousel-caption">
+                  <h3>Kasol</h3>
+               </div>
+            </div>
+            <div class="item">
+               <img src="onlyimages/carlMahabalipuram.jpg" alt="Mahabalipuram">
+               <div class="carousel-caption">
+                  <h3>Mahabalipuram</h3>
+               </div>
+            </div>
+         </div>
+      </div>
+      <hr>
+      <!-- One -->
+      <section id="one" class="wrapper style1">
+         <header class="major">
+            <h2>We bring you the most exciting deals !</h2>
+            <br><br>
+            <p>Join us today !</p>
+         </header>
+      </section>
+      <!-- Two -->
+      <section id="two" class="wrapper style2">
+         <header class="major">
+            <h2>Discover and wonder !</h2>
+         </header>
+         <div class="container">
+            <div class="row">
+               <div class="6u">
+                  <section class="special">
+                     <a href="#" class="image fit"><img src="images/pic01.jpg" alt="" /></a>
+                     <p>Now travel wherever you wish to at affordable price.</p>
+                  </section>
+               </div>
+               <div class="6u">
+                  <section class="special">
+                     <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+                     <p>Wander ! Wonder ! Inspire !</p>
+                  </section>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Three -->
+      <!-- Footer -->
+      <footer id="footer">
+         <div class="container">
+            <div class="row double">
+               <div class="6u">
+                  <div class="row collapse-at-2">
+                     <div class="6u">
+                        <h3>Contact</h3>
+                        <ul class="alt">
+                           <li><a href="#">Email - abc@xyz.com</a></li>
+                           <li><a href="#">Contact - +91123456789</a></li>
+                           <li><a href="#">Fax - 4345 2342</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <div class="6u">
+                  <h2>We strive hard to serve you the best of us !</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                     Lobortis mattis aliquam faucibus purus in massa tempor nec feugiat.
+                  </p>
+                  <ul class="icons">
+                     <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                     <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                     <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                     <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                     <li><a href="#" class="icon fa-pinterest"><span class="label">Pinterest</span></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </body>
+</html>
